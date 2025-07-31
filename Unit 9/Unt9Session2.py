@@ -26,6 +26,7 @@ Given the following pseudocode and the root of a binary tree, return a list of t
         if left -> poppednode.left
         if right -> poppednode.right
         
+    return list       
     
 4. Translate the pseudocode into Python and share your final answer:
 
@@ -93,7 +94,19 @@ Evaluate the time complexity of your solution. Define your variables and give a 
     
 2. Write out in plain English what you want to do: 
     traverse the tree, for every recursive call add 1, until we hit a leaf node in which we return
+    if both nodes exist, recursively call function on both subtree sides
+    if only one side exists, call that side recursively
+    
 3. Translate each sub-problem into pseudocode:
+def min_depth(root):
+    def helper(node):
+        if not node left and not node right:
+            return 0
+        if both nodes:
+            return min (helper(right), helper(left))
+        if either side
+            return helper left OR right
+    return helper(root)
 
 4. Translate the pseudocode into Python and share your final answer:
 
@@ -114,8 +127,10 @@ def min_depth(root):
             return 0
         
         if not node.left and not node.right:
-            return 1 + min(helper(node.right), helper(node.right))
+            return 1
         if node.left and node.right:
+            return 1 + min(helper(node.left), helper(node.right))
+        if node.left:
             return 1 + helper(node.left)
         if node.right:
             return 1 + helper(node.right)
@@ -132,11 +147,26 @@ print(min_depth(rootTwo))
 Problem 3
 
 1. Share 2 questions you would ask to help understand the question:
+    What if tree is empty?
+    What is the expected output for a print by level?
     
 2. Write out in plain English what you want to do: 
-
+    Use a queue to print out the binary tree data,
+    going line by line as we pop and append respective nodes
+    
 3. Translate each sub-problem into pseudocode:
-
+    if root is none
+        return
+    queue = dequeu
+    queue append root
+    while queue
+    poppednode = queue.popleft
+    print popnode value
+    if popednode left
+        queue.append poppednodeleft
+    if poppednode right
+        queue append poppednoderight
+        
 4. Translate the pseudocode into Python and share your final answer:
 
 '''
